@@ -129,7 +129,6 @@ async function start() {
 
 async function loadState() {
   state.gameIsOn = (await browser.storage.sync.get(["gameIsOn"])).gameIsOn;
-  debugger;
   let backImage = (await browser.storage.local.get(["backgroundSrc"]))
     .backgroundSrc;
   state.backgroundSrc = backImage.src;
@@ -149,7 +148,6 @@ function segmentBodyInRealTime() {
   async function bodySegmentationFrame() {
     if (state.gameIsOn) {
       if (state.maskingFrameCounter == 0) {
-        debugger;
         var multiPersonSegmentation = await estimateSegmentation();
         state.maskCache = toMask(multiPersonSegmentation);
       }
@@ -189,7 +187,6 @@ async function estimateSegmentation() {
 
 browser.storage.onChanged.addListener(function (changes) {
   if (changes["backgroundSrc"]) {
-    debugger;
     var backgroundImg = changes["backgroundSrc"].newValue;
     var backgroundImgSource = backgroundImg.src;
     if (!backgroundImg.isCustom) {
