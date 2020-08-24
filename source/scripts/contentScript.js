@@ -172,17 +172,17 @@ function segmentBodyInRealTime() {
 async function loadBodyPix() {
   state.net = await bodyPix.load({
     architecture: "MobileNetV1",
-    outputStride: 16,
+    outputStride: 8,
     multiplier: 1,
     quantBytes: 2,
   });
 }
 async function estimateSegmentation() {
   return await state.net?.segmentPerson(state.video, {
-    internalResolution: "low",
-    segmentationThreshold: 0.8,
+    internalResolution: "high",
+    segmentationThreshold: 0.4,
     maxDetections: 1,
-    scoreThreshold: 0.3,
+    scoreThreshold: 0.5,
     nmsRadius: 20,
   });
 }

@@ -16,8 +16,8 @@ window.navigator.mediaDevices.getUserMedia = async function (constraints) {
     };
     
     var videoElement = tryGetVideoElement();
-    videoElement.height = 400;
-    videoElement.width = 400;
+    //videoElement.height = 720;
+    //videoElement.width = 1280;
     videoElement.srcObject = stream;
 
     return res;

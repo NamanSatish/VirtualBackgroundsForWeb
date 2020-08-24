@@ -1,6 +1,6 @@
 {
   "name": "virtual-backgrounds-for-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "VirtualBackgroundsForWeb",
   "repository": "https://github.com/babgev/VirtualBackgroundsForWeb.git",
   "engines": {
@@ -24,6 +24,7 @@
     "@material/button": "^6.0.0",
     "@material/ripple": "^6.0.0",
     "@tensorflow-models/body-pix": "^2.0.5",
+    "@tensorflow/tfjs-backend-wasm": "^1.7.4",
     "@tensorflow/tfjs-converter": "^1.7.3",
     "@tensorflow/tfjs-core": "^1.7.3",
     "advanced-css-reset": "^1.1.0",
