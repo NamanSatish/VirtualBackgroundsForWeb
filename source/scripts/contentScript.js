@@ -147,13 +147,18 @@ function injectMediaSourceSwap() {
 function segmentBodyInRealTime() {
   async function bodySegmentationFrame() {
     if (state.gameIsOn) {
-      if (state.maskingFrameCounter == 0) {
+      
+      if (state.maskingFrameCounter == 0 || state.maskCache.height != state.canvas.height || state.maskCache.width != state.canvas.width) {
         var multiPersonSegmentation = await estimateSegmentation();
         state.maskCache = toMask(multiPersonSegmentation);
+        console.log("Reloading Mask!")
       }
+      //console.log((state.canvas))
+      //console.log((state.video))
+      //console.log( state.maskCache)
       bodyPix.drawMask(state.canvas, state.video, state.maskCache, 1, 0, false);
       state.maskingFrameCounter++;
-      if (state.maskingFrameCounter == 40) {
+      if (state.maskingFrameCounter == 1) {
         state.maskingFrameCounter = 0;
       }
     } else {
@@ -170,18 +175,18 @@ function segmentBodyInRealTime() {
 async function loadBodyPix() {
   state.net = await bodyPix.load({
     architecture: "MobileNetV1",
-    outputStride: 8,
+    outputStride: 16,
     multiplier: 1,
-    quantBytes: 2,
+    quantBytes: 4,
   });
 }
 async function estimateSegmentation() {
   return await state.net?.segmentPerson(state.video, {
-    internalResolution: "high",
-    segmentationThreshold: 0.4,
+    internalResolution: "medium",
+    segmentationThreshold: 0.7,
     maxDetections: 1,
-    scoreThreshold: 0.5,
-    nmsRadius: 20,
+    scoreThreshold: 0.3,
+    nmsRadius: 10,
   });
 }
 
