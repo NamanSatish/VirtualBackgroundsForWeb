@@ -1,16 +1,16 @@
 {
   "manifest_version": 2,
-  "name": "Virtual backgrounds for Google Meet",
+  "name": "VirtualBackground",
   "version": "1.0.1",
-  "description": "Virtual backgrounds for Google Meet",
-  "homepage_url": "https://github.com/babgev/VirtualBackgroundsForWeb",
-  "short_name": "VirtualBackgroundsForMeet",
+  "description": "VirtualBackground",
+  "homepage_url": "https://github.com/NamanSatish/VirtualBackgroundsForWeb",
+  "short_name": "VirtualBackground",
   "permissions": [
     "storage",
     "unlimitedStorage",
     "https://meet.google.com/"
   ],
-  "author": "Coderantine",
+  "author": "NamanSatish",
   "minimum_chrome_version": "49",
   "browser_action": {
     "default_popup": "popup.html",
@@ -20,7 +20,7 @@
       "48": "assets/icons/logo-48.png",
       "128": "assets/icons/logo-128.png"
     },
-    "default_title": "Virtual backgrounds for Google Meet",
+    "default_title": "VirtualBackground",
     "chrome_style": false
   },
   "background": {

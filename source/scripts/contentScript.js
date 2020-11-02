@@ -158,7 +158,7 @@ function segmentBodyInRealTime() {
       //console.log( state.maskCache)
       bodyPix.drawMask(state.canvas, state.video, state.maskCache, 1, 0, false);
       state.maskingFrameCounter++;
-      if (state.maskingFrameCounter == 1) {
+      if (state.maskingFrameCounter == 15) {
         state.maskingFrameCounter = 0;
       }
     } else {
@@ -174,10 +174,9 @@ function segmentBodyInRealTime() {
 
 async function loadBodyPix() {
   state.net = await bodyPix.load({
-    architecture: "MobileNetV1",
-    outputStride: 16,
-    multiplier: 1,
-    quantBytes: 4,
+    architecture: "ResNet50",
+    outputStride: 32,
+    quantBytes: 2,
   });
 }
 async function estimateSegmentation() {
@@ -185,8 +184,8 @@ async function estimateSegmentation() {
     internalResolution: "medium",
     segmentationThreshold: 0.7,
     maxDetections: 1,
-    scoreThreshold: 0.3,
-    nmsRadius: 10,
+    scoreThreshold: 0.4,
+    nmsRadius: 20,
   });
 }
 
